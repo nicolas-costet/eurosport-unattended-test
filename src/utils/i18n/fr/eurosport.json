@@ -1,0 +1,16 @@
+{
+  "eurosport": {
+    "stats": {
+      "rank": "Classement ATP",
+      "points": "Points ATP",
+      "age": "Age",
+      "height": "Taille",
+      "weight": "Poids"
+    },
+    "matches": {
+      "title": "Match gagnés",
+      "startDate": "Début : ",
+      "endDate": "Fin : "
+    }
+  }
+}
