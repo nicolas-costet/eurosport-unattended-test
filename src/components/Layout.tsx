@@ -1,12 +1,12 @@
-import {FunctionComponent, ReactElement} from "react";
+import {FC, ReactElement} from "react";
 
 interface TripPlannerLayoutProps {
     children: ReactElement;
 }
 
-const Layout: FunctionComponent<TripPlannerLayoutProps> = ({
-                                                               children,
-                                                           }) => {
+const Layout: FC<TripPlannerLayoutProps> = ({
+                                                children,
+                                            }) => {
     return (
         <div className="mx-auto">
             {children}

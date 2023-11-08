@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import Layout from "../components/Layout";
-import Players from "../components/players/Players";
-import Matches from "../components/matches/Matches";
+import PlayerList from "../components/players/PlayerList";
+import MatchList from "../components/matches/MatchList";
 import {useAppDispatch, useAppSelector} from "../store/hooks";
 import {loadMatches} from "../store/matches/matchesSlice";
 import {selectSelectedPlayerId} from "../store/players/playerSlice";
@@ -18,9 +18,9 @@ function Home() {
     return (
         <Layout>
             <>
-                <Players/>
+                <PlayerList/>
                 {selectedPlayerId &&
-                    <Matches/>
+                    <MatchList />
                 }
             </>
         </Layout>

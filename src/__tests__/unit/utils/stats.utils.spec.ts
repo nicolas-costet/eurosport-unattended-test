@@ -8,7 +8,7 @@ describe('stats utils', () => {
         expect(formatWeight(70000)).toEqual('70 Kg');
     });
     it('should format height', () => {
-        expect(formatHeight(185)).toEqual('1.85');
+        expect(formatHeight(185)).toEqual('1.85 m');
     });
 
     it('should compute totalPlayedTime', () => {
@@ -32,5 +32,32 @@ describe('stats utils', () => {
                 endTime: "2021-10-29T13:20:00.000Z"
             }
         ])).toEqual('16H02');
+    });
+
+    it('if match without dates should skip match and compute totalPlayedTime', () => {
+        expect(computeTotalPlayedTime([
+            {
+                id: "1",
+                players: [],
+                winner: {
+                    id: "1"
+                },
+                startTime: "2022-01-31T07:12:00.000Z",
+                endTime: "2022-01-31T16:33:00.000Z"
+            },
+            {
+                id: "1",
+                players: [],
+                winner: {
+                    id: "1"
+                },
+                startTime: "",
+                endTime: ""
+            }
+        ])).toEqual('09H21');
+    });
+
+    it('if no match should return 0', () => {
+        expect(computeTotalPlayedTime([])).toEqual('00H00');
     });
 });

@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect, useState} from 'react';
+import React, {FunctionComponent, useCallback, useEffect, useState} from 'react';
 import {Player, selectSelectedPlayerId, setSelectedPlayerId} from "../../store/players/playerSlice";
 import {useTranslation} from "react-i18next";
 import {computeTotalPlayedTime, formatHeight, formatWeight} from "../../utils/stats.utils";
@@ -24,16 +24,19 @@ const PlayerCard: FunctionComponent<PlayerProps> = ({player}) => {
         setActive(selectedPlayerId !== undefined && selectedPlayerId === player.id);
     }, [selectedPlayerId, player.id])
 
-    const containerStyle = clsx({
+    const containerStyle = clsx('mt-8 mx-auto lg:mx-0 lg:mt-0 bg-grey border-1 hover:border-dark-grey hover:bg-light-grey hover:scale-110 transition duration-500 md:w-600 max-w-lg hover:shadow-lg player-container',
+        {
         'bg-light-grey border-dark-grey shadow-lg': isActive,
         'border-grey': !isActive,
-        'mt-8 mx-auto lg:mx-0 lg:mt-0 bg-grey border-1 hover:border-dark-grey hover:bg-light-grey hover:scale-110 transition duration-500 md:w-600 max-w-lg hover:shadow-lg player-container': true
     });
+
+    const handleClickCard = useCallback(() => dispatch(setSelectedPlayerId(player.id)
+    ), [dispatch, player.id]);
 
     return (
         <div
             className={containerStyle}
-            onClick={() => dispatch(setSelectedPlayerId(player.id))}
+            onClick={handleClickCard}
         >
             <div className="flex w-full">
                 <div className="justify-self-start">
