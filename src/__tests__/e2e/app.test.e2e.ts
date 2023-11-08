@@ -1,6 +1,6 @@
 import puppeteer, {Browser, Page} from 'puppeteer';
 
-describe("App.tsx", () => {
+describe("Home.tsx", () => {
     let browser: Browser;
     let page: Page;
 

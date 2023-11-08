@@ -1,6 +1,6 @@
 import matchReducer, {
 
-} from '../../../../features/matches/matchesSlice';
+} from '../../../../store/matches/matchesSlice';
 
 describe('matches reducer', () => {
     it('should handle initial state', () => {

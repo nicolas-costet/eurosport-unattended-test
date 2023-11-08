@@ -1,8 +1,8 @@
 import React, {FunctionComponent} from 'react';
 
-import {useAppSelector} from '../../app/hooks';
-import {selectSelectedPlayerWinningMatches,} from './matchesSlice';
-import MatchesCard from "../../components/MatchesCard";
+import {useAppSelector} from '../../store/hooks';
+import {selectSelectedPlayerWinningMatches,} from '../../store/matches/matchesSlice';
+import MatchesCard from "./MatchesCard";
 
 const Matches: FunctionComponent = () => {
     const matches = useAppSelector(selectSelectedPlayerWinningMatches);

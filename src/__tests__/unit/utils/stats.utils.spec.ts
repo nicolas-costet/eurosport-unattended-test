@@ -1,10 +1,12 @@
 import {computeTotalPlayedTime, formatHeight, formatWeight} from "../../../utils/stats.utils";
 
-describe('status utils', () => {
-    it('should format weight', () => {
+describe('stats utils', () => {
+    it('when negative should throw error', () => {
+        expect(() => formatWeight(-1)).toThrow("Cannot format negative values");
+    });
+    it('when good value should format weight', () => {
         expect(formatWeight(70000)).toEqual('70 Kg');
     });
-
     it('should format height', () => {
         expect(formatHeight(185)).toEqual('1.85');
     });

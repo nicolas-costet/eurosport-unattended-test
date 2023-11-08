@@ -6,7 +6,6 @@ interface TripPlannerLayoutProps {
 
 const Layout: FunctionComponent<TripPlannerLayoutProps> = ({
                                                                children,
-
                                                            }) => {
     return (
         <div className="mx-auto">

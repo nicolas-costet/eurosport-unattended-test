@@ -1,5 +1,5 @@
 import {gql} from "@apollo/client";
-import {apolloClient} from "../../app/apollo.client";
+import {apolloClient} from "../apollo.client";
 const GET_PLAYERS = gql`
   query GetPlayers {
     players {

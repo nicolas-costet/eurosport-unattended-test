@@ -1,6 +1,6 @@
 import playerReducer, {
 
-} from '../../../../features/players/playerSlice';
+} from '../../../../store/players/playerSlice';
 
 describe('players reducer', () => {
     it('should handle initial state', () => {

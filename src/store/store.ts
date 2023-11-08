@@ -1,6 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import playersReducer from '../features/players/playerSlice';
-import matchesReducer from '../features/matches/matchesSlice';
+import playersReducer from './players/playerSlice';
+import matchesReducer from './matches/matchesSlice';
 
 export const store = configureStore({
     reducer: {

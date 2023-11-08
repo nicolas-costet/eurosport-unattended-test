@@ -1,14 +1,14 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
+import { RootState } from '../store';
 import { fetchMatches } from './matchAPI';
 import {Country} from "../players/playerSlice";
 
 export interface MatchesState {
-    matches: Match[];
+    matches: MatchDto[];
     status: 'idle' | 'loading' | 'failed';
 }
 
-export interface MatchPlayer {
+export interface MatchPlayerDto {
     id: string;
     firstname: string;
     lastname: string;
@@ -20,9 +20,9 @@ export interface MatchWinner {
     id: string;
 }
 
-export interface Match {
+export interface MatchDto {
     id: string;
-    players: MatchPlayer[];
+    players: MatchPlayerDto[];
     winner: MatchWinner;
     startTime: string;
     endTime: string;

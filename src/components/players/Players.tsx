@@ -1,12 +1,12 @@
 import React, {FunctionComponent, useEffect} from 'react';
 
-import {useAppSelector, useAppDispatch} from '../../app/hooks';
+import {useAppSelector, useAppDispatch} from '../../store/hooks';
 import {
     loadPlayers, selectLoadPlayersStatus,
     selectPlayers,
-} from './playerSlice';
-import PlayerCard from "../../components/PlayerCard";
-import Layout from "../../components/Layout";
+} from '../../store/players/playerSlice';
+import PlayerCard from "./PlayerCard";
+import Layout from "../Layout";
 
 const Players: FunctionComponent = () => {
     const players = useAppSelector(selectPlayers);

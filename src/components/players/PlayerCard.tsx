@@ -1,9 +1,10 @@
 import React, {FunctionComponent, useEffect, useState} from 'react';
-import {Player, selectSelectedPlayerId, setSelectedPlayerId} from "../features/players/playerSlice";
+import {Player, selectSelectedPlayerId, setSelectedPlayerId} from "../../store/players/playerSlice";
 import {useTranslation} from "react-i18next";
-import {computeTotalPlayedTime, formatHeight, formatWeight} from "../utils/stats.utils";
-import {useAppDispatch, useAppSelector} from "../app/hooks";
-import {selectMatches} from "../features/matches/matchesSlice";
+import {computeTotalPlayedTime, formatHeight, formatWeight} from "../../utils/stats.utils";
+import {useAppDispatch, useAppSelector} from "../../store/hooks";
+import {selectMatches} from "../../store/matches/matchesSlice";
+import {clsx} from "clsx";
 
 interface PlayerProps {
     player: Player;
@@ -23,9 +24,15 @@ const PlayerCard: FunctionComponent<PlayerProps> = ({player}) => {
         setActive(selectedPlayerId !== undefined && selectedPlayerId === player.id);
     }, [selectedPlayerId, player.id])
 
+    const containerStyle = clsx({
+        'bg-light-grey border-dark-grey shadow-lg': isActive,
+        'border-grey': !isActive,
+        'mt-8 mx-auto lg:mx-0 lg:mt-0 bg-grey border-1 hover:border-dark-grey hover:bg-light-grey hover:scale-110 transition duration-500 md:w-600 max-w-lg hover:shadow-lg player-container': true
+    });
+
     return (
         <div
-            className={`mt-8 mx-auto lg:mx-0 lg:mt-0 bg-grey border-1 hover:border-dark-grey hover:bg-light-grey md:w-600 max-w-lg hover:shadow-lg ${isActive ? "bg-light-grey border-dark-grey shadow-lg" : "border-grey"} player-container`}
+            className={containerStyle}
             onClick={() => dispatch(setSelectedPlayerId(player.id))}
         >
             <div className="flex w-full">
