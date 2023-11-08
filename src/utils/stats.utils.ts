@@ -13,15 +13,15 @@ export const formatHeight = (height: number): string => {
 }
 
 export const computeTotalPlayedTime = (matches: MatchDto[]): string => {
-    return Duration.fromObject({minutes: matches.reduce((minutesPlayed, match) => minutesPlayed + computeOneMatchPlayedTime(match), 0)}).toFormat("hhHmm");
+    const minutesPlayed = matches.reduce((minutesPlayed, match) => minutesPlayed + computeOneMatchPlayedTime(match), 0);
+    return Duration.fromObject({minutes: minutesPlayed}).toFormat("hhHmm");
 }
 
 export const computeOneMatchPlayedTime = (match: MatchDto): number => {
     const matchEndDateTime = DateTime.fromISO(match.endTime);
     const matchStartDateTime = DateTime.fromISO(match.startTime);
-    return (matchEndDateTime && matchStartDateTime) ?
-        matchEndDateTime.diff(matchStartDateTime, "minute").minutes
-        :
-        0
-        ;
+    if (!matchStartDateTime.isValid || !matchEndDateTime.isValid) {
+        return 0;
+    }
+    return matchEndDateTime.diff(matchStartDateTime, "minute").minutes;
 }
